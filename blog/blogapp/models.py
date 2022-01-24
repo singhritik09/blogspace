@@ -5,6 +5,13 @@ from matplotlib.pyplot import text
 from django.urls import reverse
 # Create your models here.
 
+class Video(models.Model):
+    caption=models.CharField(max_length=30)
+    video=models.FileField(upload_to="video/%y")
+    
+    def __str__(self):
+        return self.caption
+
 class Post(models.Model):
     author=models.ForeignKey('auth.User',on_delete=models.CASCADE)
     title=models.CharField(max_length=100)
